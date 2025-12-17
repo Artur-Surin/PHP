@@ -24,8 +24,14 @@ $message = "";
 
 // TODO: Ваш код тут
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Пишіть тут...
+    $email = $_POST['email'] ?? '';
+    $message = $_POST['message'] ?? '';
 
+    if (empty($email) || empty($message)) {
+        $displayMessage = "Помилка: Заповніть всі поля!";
+    } else {
+        $displayMessage = "Дякуємо! Ваше повідомлення отримано.";
+    }
 }
 
 
