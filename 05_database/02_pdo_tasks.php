@@ -38,18 +38,27 @@ try {
 
 // TODO: Ваш код вставки (INSERT) тут
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $sql = "INSERT INTO tasks (title) VALUES (:title)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['title' => $_POST['title']]);
+}
 
 // 3. ВИДАЛЕННЯ СПРАВИ (За бажанням)
 // Якщо в GET передано ?delete=ID -> видаліть цю справу.
 
 // TODO: Ваш код видалення (DELETE) тут
-
+// if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete'])) {
+//     $sql = "DELETE FROM tasks WHERE id = :id";
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->execute(['id' => $_GET['delete']]);
+// }
 
 // 4. ОТРИМАННЯ СПИСКУ СПРАВ
 // Отримайте всі справи з таблиці `tasks` (ORDER BY id DESC).
 
 // TODO: Ваш код вибірки (SELECT) тут
-$tasks = []; // Замініть на результат з БД
+$tasks = $pdo->query("SELECT * FROM tasks ORDER BY id DESC")->fetchAll();
 
 ?>
 

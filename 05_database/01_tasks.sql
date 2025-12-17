@@ -12,7 +12,8 @@
 
 -- ВАШ КОД ТУТ:
 -- CREATE TABLE ...
-    CREATE TABLE products_test (
+
+    CREATE TABLE products (
         id INT AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         price DECIMAL(10,2),
